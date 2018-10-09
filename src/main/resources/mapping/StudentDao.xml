@@ -5,13 +5,29 @@
     <resultMap  type="com.peihou.pojo.Student" id="StudentMapper">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
+        <result property="age" column="age"/>
         <result property="sex" column="sex"/>
         <result property="address" column="address"/>
         <result property="phone" column="phone"/>
         <result property="email" column="email"/>
         <result property="codes" column="codes"/>
     </resultMap>
-    <select id="queryById"  resultType="com.peihou.pojo.Student">
+    <insert id="insert" parameterType="com.peihou.pojo.Student">
+        insert into t_student(name,age,sex,address,phone,email,codes) values(#{name},#{age},#{sex},#{address},#{phone},#{email},#{codes});
+    </insert>
+    <delete id="deleteById" parameterType="int">
+        delete from t_student where id=#{id};
+    </delete>
+    <update id="updateById" parameterType="com.peihou.pojo.Student">
+        update t_student set name=#{name},age=#{age},sex=#{sex},address=#{address},phone=#{phone},email=#{email},codes=#{codes} where id=#{id}
+    </update>
+    <select id="queryById"  parameterType="int" resultType="com.peihou.pojo.Student">
         select * from t_student where id=#{id};
+    </select>
+    <select id="findAllStudent" resultType="com.peihou.pojo.Student">
+        select * from t_student;
+    </select>
+    <select id="queryStudentByCodes" parameterType="java.lang.String" resultType="com.peihou.pojo.Student">
+        select * from t_student where codes=#{codes}
     </select>
 </mapper>
