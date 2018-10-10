@@ -21,13 +21,13 @@
     <update id="updateById" parameterType="com.peihou.pojo.Student">
         update t_student set name=#{name},age=#{age},sex=#{sex},address=#{address},phone=#{phone},email=#{email},codes=#{codes} where id=#{id}
     </update>
-    <select id="queryById"  parameterType="int" resultType="com.peihou.pojo.Student">
+    <select id="queryById"  parameterType="int" resultMap="StudentMapper">
         select * from t_student where id=#{id};
     </select>
-    <select id="findAllStudent" resultType="com.peihou.pojo.Student">
+    <select id="findAllStudent" resultMap="StudentMapper">
         select * from t_student;
     </select>
-    <select id="queryStudentByCodes" parameterType="java.lang.String" resultType="com.peihou.pojo.Student">
+    <select id="queryStudentByCodes" parameterType="java.lang.String" resultMap="StudentMapper">
         select * from t_student where codes=#{codes}
     </select>
 </mapper>
