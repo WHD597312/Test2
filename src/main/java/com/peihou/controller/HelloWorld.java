@@ -2,7 +2,6 @@ package com.peihou.controller;
 
 import com.peihou.pojo.Student;
 import com.peihou.service.StudentService;
-import com.peihou.service.impl.StudentServiceImpl;
 import com.peihou.util.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -36,4 +36,9 @@ public class Test {
         System.out.println("size:"+uuid.length());
         System.out.println("x="+x);
     }
+    @org.junit.Test
+    public void test4(){
+        String s="+       mmmmm    ";
+        System.out.print(s);
+    }
 }

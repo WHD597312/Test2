@@ -59,4 +59,19 @@
         <property name="basePackage" value="com.peihou.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
     </bean>
+    <!--配置事务管理者-->
+    <bean id="dataSourceTransactionManagerID" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!-- 配置事务通知 -->
+    <tx:advice id="tx" transaction-manager="dataSourceTransactionManagerID">
+        <tx:attributes>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+    <!--配置切面-->
+    <aop:config>
+        <aop:pointcut id="pointcut" expression="execution(* com.peihou.service.*.*(..))"/>
+        <aop:advisor advice-ref="tx" pointcut-ref="pointcut"/>
+    </aop:config>
 </beans>

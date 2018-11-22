@@ -19,7 +19,17 @@
         delete from t_student where id=#{id};
     </delete>
     <update id="updateById" parameterType="com.peihou.pojo.Student">
-        update t_student set name=#{name},age=#{age},sex=#{sex},address=#{address},phone=#{phone},email=#{email},codes=#{codes} where id=#{id}
+        update t_student
+        <set>
+            <if test="name!=null and name!=''">name=#{name}</if>
+            <if test="age>0">age=#{age}</if>
+            <if test="sex!=null and sex!=''">sex=#{sex}</if>
+            <if test="address!=null and address!=''">address=#{address}</if>
+            <if test="phone!=null and phone!=''">phone=#{phone}</if>
+            <if test="email!=null and email!=''">email=#{email}</if>
+            <if test="codes!=null and codes!=''">codes=#{codes}</if>
+        </set>
+        <trim prefix="where"><if test="id>0">id=#{id}</if></trim>
     </update>
     <select id="queryById"  parameterType="int" resultMap="StudentMapper">
         select * from t_student where id=#{id};
