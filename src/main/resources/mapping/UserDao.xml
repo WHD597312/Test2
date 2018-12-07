@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peihou.dao.UserDao">
+    <resultMap id="UserMapper" type="com.peihou.pojo.User">
+        <id property="uid" column="uid"/>
+        <result property="uname" column="uname"/>
+        <result property="usex" column="usex"/>
+        <result property="codes" column="codes"/>
+        <result property="image" column="image"/>
+        <collection property="ordersList" ofType="com.peihou.pojo.Orders" column="uid" select="com.peihou.dao.OrderDao.findUserOrdersById"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.peihou.pojo.User">
+        insert into t_user(uname,usex,codes) values(#{uname},#{usex},#{codes})
+    </insert>
+    <update id="update" parameterType="com.peihou.pojo.User">
+        update t_user
+        <set>
+            <if test="uname!=null and uname!=''">uname=#{uname},</if>
+            <if test="usex!=null and usex!=''">usex=#{usex},</if>
+            <if test="image!=null and image!=''">image=#{image}</if>
+        </set>
+        <where>
+            <if test="uid>0">uid=#{uid}</if>
+        </where>
+    </update>
+    <select id="findUserByCodes" parameterType="java.lang.String" resultMap="UserMapper" >
+        select * from t_user where codes=#{codes}
+    </select>
+    <select id="findUserById" parameterType="int" resultMap="UserMapper">
+        select * from t_user where uid=#{uid}
+    </select>
+    <select id="selectUserOrdersById1" parameterType="int" resultMap="UserMapper">
+        select * from t_user where uid=#{uid}
+    </select>
+    <resultMap id="userMapper2" type="com.peihou.pojo.User">
+        <id property="uid" column="uid"/>
+        <result property="uname" column="uname"/>
+        <result property="usex" column="usex"/>
+        <collection property="ordersList" ofType="com.peihou.pojo.Orders">
+            <id property="id" column="id"/>
+            <result property="uid" column="uid"/>
+            <result property="ordersn" column="ordersn"/>
+        </collection>
+    </resultMap>
+    <select id="selectUserOrdersById2" parameterType="int" resultMap="userMapper2">
+        select u.uid,u.uname,u.usex,o.id,o.ordersn from t_user u,t_order o where u.uid=o.uid and u.uid=#{uid};
+    </select>
+</mapper>

@@ -21,6 +21,7 @@ public class HelloWorld {
     StudentService studentService;
    @RequestMapping("/hello")
     public @ResponseBody String hello(){
+       System.out.println("处理客户端请求");
         return "hello";
     }
     @RequestMapping("hello2")

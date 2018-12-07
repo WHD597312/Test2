@@ -1,0 +1,7 @@
+create table t_user(
+	uid int primary key auto_increment,
+	uname char(40) character set utf8 default null,
+	usex char(40) character set utf8 default null
+)engine=innodb default charset=utf8;
+alter table t_user add codes char(40) character set utf8 default null;
+alter table t_user add image char(40) character set utf8 default null;

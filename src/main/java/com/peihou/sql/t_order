@@ -1,0 +1,7 @@
+create table t_order(
+	id int primary key auto_increment,
+	ordersn char(40) character set utf8 default null,
+	uid int,
+	key uid (uid),
+	constraint uid foreign key (uid) references t_user (uid)
+)engine=innodb default charset=utf8;

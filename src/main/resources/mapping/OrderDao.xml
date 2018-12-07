@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peihou.dao.OrderDao">
+    <resultMap id="OrderMapper" type="com.peihou.pojo.Orders">
+        <id property="id" column="id"/>
+        <result property="codes" column="codes"/>
+        <result property="ordersn" column="ordersn"/>
+        <result property="uid" column="uid"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.peihou.pojo.Orders">
+        insert into t_order(codes,ordersn,uid) values(#{codes},#{ordersn},#{uid})
+    </insert>
+    <select id="findOrderByCodes" parameterType="java.lang.String" resultMap="OrderMapper">
+        select * from t_order where codes=#{codes}
+    </select>
+    <select id="findUserOrdersById" parameterType="int" resultMap="OrderMapper">
+        select * from t_order where uid=#{uid}
+    </select>
+</mapper>
