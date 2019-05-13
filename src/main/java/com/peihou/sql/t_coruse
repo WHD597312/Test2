@@ -1,0 +1,5 @@
+CREATE TABLE t_course
+(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    cname text character set UTF8 NOT NULL
+);

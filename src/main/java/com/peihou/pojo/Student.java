@@ -10,6 +10,7 @@ public class Student {
     private String email;
     private String codes;
 
+
     public Student(){}
 
     public int getId() {
@@ -74,5 +75,19 @@ public class Student {
 
     public void setCodes(String codes) {
         this.codes = codes;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", codes='" + codes + '\'' +
+                '}';
     }
 }

@@ -26,6 +26,7 @@ public class HelloWorld {
     }
     @RequestMapping("hello2")
     public String hello2(){
+       System.out.println("--->"+"sssssssssssssssssss");
        return "hello2";
     }
 

@@ -35,7 +35,7 @@
     <!-- 3.配置jsp 显示ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/JSP/"/>
+        <property name="prefix" value="/pager/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 

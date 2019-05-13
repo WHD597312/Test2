@@ -21,5 +21,6 @@ public class Test {
 //        list.add(80);
 //        int max=Collections.max(list);
         System.out.println("max:"+max);
+
     }
 }
